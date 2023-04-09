@@ -9,7 +9,10 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].js',
+    },
+    devServer: {
+        port: 3000
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -19,4 +22,12 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss)$/,
+                use: ["style-loader","css-loader","sass-loader",]
+            }
+        ]
+    }
 }
