@@ -4,7 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ["@babel/polyfill", "./src/index.jsx"],
+    entry: ["@babel/polyfill", "./src/index.tsx"],
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].[hash].js',
@@ -22,6 +26,11 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
@@ -58,5 +67,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+
 }
