@@ -1,21 +1,29 @@
 import React, {useState} from 'react';
 import './style.scss'
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {weatherSlice} from "../store/reducers/WeatherSlice";
 const App = () => {
-    const [text, setText] = useState('');
     const [isShow, setShow] = useState(false);
-    console.log(isShow)
+
+    const  {text} = useAppSelector(state => state.weatherReducer)
+    const dispatch = useAppDispatch()
+    const { add } = weatherSlice.actions
 
     return (
         <div className="header">
             React
             <input
                 onChange={(e) => {
-             setText(e.target.value)
+                   dispatch(add(e.target.value))
             }}
                 value={text}
             />
-            <button onClick={() => setShow(true) }>Show Text</button>
-            <button onClick={() => setText('') }>Delete Text</button>
+            <button onClick={() => setShow(true) }>
+                Show Text
+            </button>
+            <button onClick={() => dispatch(add('')) }>
+                Delete Text
+            </button>
             {
                 isShow &&
                     <div>
