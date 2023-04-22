@@ -1,27 +1,44 @@
 import React, {useState} from 'react';
+import {useAppDispatch} from "../hooks/redux";
+
+import {citySlice} from "../store/reducers/CitySlice";
+
+import WeatherCard from "./WeatherCard";
+
 import './style.scss'
 const App = () => {
-    const [text, setText] = useState('');
     const [isShow, setShow] = useState(false);
-    console.log(isShow)
+    const [cityNew, setCityNew] = useState('');
+
+    const dispatch = useAppDispatch()
+    const { setCity } = citySlice.actions
 
     return (
         <div className="header">
             React
             <input
                 onChange={(e) => {
-             setText(e.target.value)
-            }}
-                value={text}
+                    setCityNew(e.target.value)
+                }}
+                value={cityNew}
             />
-            <button onClick={() => setShow(true) }>Show Text</button>
-            <button onClick={() => setText('') }>Delete Text</button>
+            <button onClick={() => {
+                setShow(true);
+                dispatch(setCity(cityNew))
+            } }>
+                Show Text
+            </button>
+            <button onClick={() => {
+                setShow(false)
+                dispatch(setCity(''))
+            } }>
+                Delete Text
+            </button>
             {
-                isShow &&
-                    <div>
-                        {text}
-                    </div>
+
+                isShow && <WeatherCard/>
             }
+
         </div>
     );
 };
