@@ -1,0 +1,43 @@
+.contaner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 2px solid #0324f8;
+  background-color: #c0c8f8;
+  border-radius: 5px;
+  padding: 20px;
+  gap: 10px;
+
+  & .city {
+    color: #0324f8;
+    font-size: 30px;
+  }
+
+  & .icon {
+    font-size: 20px;
+    color: #0324f8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+    & img {
+      background-color: #dcdada
+    }
+
+    & span:first-letter {
+      text-transform: uppercase
+    }
+  }
+
+  & .temperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    font-size: 20px;
+    color: #0324f8;
+  }
+}
