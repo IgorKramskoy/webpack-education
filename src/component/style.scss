@@ -1,16 +1,12 @@
 .header {
-  font-size: 48px;
-  color: green;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  & button {
-    width: 10%;
+  & h1 {
+    font-size: 36px;
+    color: #0324f8;
   }
 
-  & input {
-    width: 300px;
-  }
 }
