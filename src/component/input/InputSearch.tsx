@@ -4,10 +4,11 @@ import {citySlice} from "../../store/reducers/CitySlice";
 
 import './style.scss'
 const InputSearch = () => {
+    const dispatch = useAppDispatch();
+    const { setCity } = citySlice.actions;
+
     const [cityNew, setCityNew] = useState('');
 
-    const dispatch = useAppDispatch()
-    const { setCity } = citySlice.actions
     return (
         <div className="container">
             <input
