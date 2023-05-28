@@ -1,13 +1,11 @@
 import React from 'react';
-
 import InputSearch from "./input/InputSearch";
 import WeatherCard from "./wetherCard/WeatherCard";
-
-import './style.scss'
 import {useAppSelector} from "../hooks/redux";
+import './style.scss'
+
 
 const App = () => {
-
     const  {city} = useAppSelector(state => state.cityReducer)
 
     return (
