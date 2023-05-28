@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import { weatherApi } from "../../service/WeatherService";
 import {useAppSelector} from "../../hooks/redux";
-
 import './style.scss'
 
 const WeatherCard = () => {
-    const [test, setTest] = useState('')
-    const  {city} = useAppSelector(state => state.cityReducer)
+    const [test, setTest] = useState('');
+    const  {city} = useAppSelector(state => state.cityReducer);
 
     const { data: weather, error } = weatherApi.useFetchWeatherToCityQuery(city);
+
     useEffect(() => {
         if(weather) {
             setTest(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`)
         }
-    }, [weather])
-    console.log(weather)
+    }, [weather]);
+
     return (
         <div>
             {
