@@ -21,9 +21,10 @@ const InputSearch = () => {
                 value={cityNew}
                 placeholder="Введите город..."
             />
-            <button onClick={() => {
-                dispatch(setCity(cityNew))
-            } }>
+            <button
+                onClick={() => { dispatch(setCity(cityNew)) }}
+                type='button'
+            >
                 Search
             </button>
         </div>
