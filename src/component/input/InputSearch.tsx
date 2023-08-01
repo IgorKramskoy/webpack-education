@@ -14,16 +14,17 @@ const InputSearch = () => {
         <div className="container">
             <input
                 onChange={(e) => {
-                    if (validationLength(e.target.value)) {
-                        setCityNew(e.target.value)
-                    }
+                    setCityNew(e.target.value)
                 }}
                 value={cityNew}
                 placeholder="Введите город..."
             />
             <button onClick={() => {
-                dispatch(setCity(cityNew))
-            } }>
+                if(validationLength(cityNew)) {
+                    dispatch(setCity(cityNew))
+                }
+              }}
+            >
                 Search
             </button>
         </div>
